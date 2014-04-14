@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" data-ng-app>
+<head>
+
+    <title></title>
+    <link href="Content/jquery-pop-up.css" rel="stylesheet" />
+     <link href="Content/css/font-awesome.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+
+
+
+</head>
+<body>
+
+    <div ng-controller="PlayerController">
+
+        <div class="well">
+
+            <button id="bt" type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                Popover on right
+            </button>
+
+
+            <input type="text" ng-model="Name" placeholder="Name" />
+            <input type="text" ng-model="House" placeholder="House" />
+            <input type="text" ng-model="Picture" placeholder="Picture"/><br />
+            <div class="btn btn-warning" ng-click="addPlayer(Name, House, Picture)">
+            <span class="glyphicon glyphicon-fire"></span></div>
+        
+            </div>
+
+             <table class="table table-bordered table-responsive">
+                <tr ng-repeat="character in player">
+                <td>
+                    <span ng-hide="edit">{{character.Name}}</span>
+                   <input type="text" ng-model="character.Name" ng-hide="!edit" />
+                </td>
+
+                <td>
+                    <span ng-hide="edit">{{character.House}}</span>
+                    <input type="text" ng-model="character.House" ng-hide="!edit" />
+                </td>
+
+                <td>
+                    <span ng-hide="edit">{{character.Picture}}</span>
+                    <input type="text" ng-model="Picture" ng-hide="!edit" />
+                </td>
+
+                <td>
+                     <div class="btn btn-warning fa fa-edit" ng-click="edit=true" ng-hide="edit"> </div>
+                    <div class="btn btn-success fa fa-save" ng-click="edit=false" ng-hide="!edit"> </div>
+                </td>
+                
+                <td>  
+                <div class="btn btn-danger fa fa-trash-o" ng-click="player.splice($index,1)"></div>
+                </td>
+                    </tr>
+
+    </table>
+        
+    </div>
+
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/jquery-1.9.0.js"></script>
+      <script src="Scripts/jquery-popup.js"></script>
+  
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Script.js"></script>
+    
+</body>
+</html>
